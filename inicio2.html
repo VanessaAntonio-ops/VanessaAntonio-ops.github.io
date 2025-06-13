@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio Creativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background: #0a0a1a;
+      color: #00ffe9;
+      scroll-behavior: smooth;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: #33fff5;
+    }
+
+    .cta-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #00ffe9;
+      color: #0a0a1a;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #33fff5;
+    }
+
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #00ffe9, 0 0 30px #00ffe9; }
+      50% { text-shadow: 0 0 20px #00ffb0, 0 0 60px #00ffb0; }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, #00ffea, transparent);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 8s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-40px); }
+    }
+
+  
+    .opinion {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      background-color: rgba(10, 10, 26, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ffe9;
+      margin-top: 4rem;
+    }
+
+    .opinion h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #00ffe9;
+    }
+
+    .opinion p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      text-align: justify;
+      color: #aefefb;
+    }
+
+    section#conclusion {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Neuroquímica</h1>
+    <p>Descubre el poder del pensamiento, la ciencia y la imaginación.</p>
+    <a href="#conclusion">
+      <button class="cta-button">Explorar</button>
+    </a>
+  </div>
+
+  <div class="particles"></div>
+
+  <section id="conclusion" class="opinion">
+    <h2>🧠 Conclusión Personal</h2>
+    <p>
+      Crear esta página web sobre la neuroquímica fue una experiencia enriquecedora, ya que me permitió explorar la relación entre el cerebro y la química de una forma visual e interactiva. 
+      Aprendí que la neuroquímica no solo estudia procesos científicos, sino que también explica emociones, comportamientos y trastornos. Me gustó mucho poder integrar diseño y ciencia, y me sentí motivado a seguir aprendiendo más sobre el funcionamiento del cerebro humano desde esta perspectiva.
+    </p>
+  </section>
+
+  <script>
+    const container = document.querySelector('.particles');
+    const total = 60;
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    for (let i = 0; i < total; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = random(3, 8);
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.top = `${random(0, 100)}%`;
+      particle.style.left = `${random(0, 100)}%`;
+      particle.style.animationDuration = `${random(4, 10)}s`;
+      container.appendChild(particle);
+    }
+  </script>
+
+</body>
+<div style="text-align: center; margin-top: 40px;">
+  <a href="index.html" style="
+    background-color: #00ffe9;
+    color: #0a0a1a;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-family: 'Share Tech Mono', sans-serif;
+    text-decoration: none;
+    box-shadow: 0 0 10px #00ffe9;
+    transition: background-color 0.3s, color 0.3s;
+  "
+  onmouseover="this.style.backgroundColor='#0a0a1a'; this.style.color='#00ffe9';"
+  onmouseout="this.style.backgroundColor='#00ffe9'; this.style.color='#0a0a1a';">
+    ⬅ Volver a la Página Principal
+  </a>
+</div>
+</html>

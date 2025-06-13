@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería con Máscaras</title>
+   <h1 style="text-align: center;" aria-label="Autores">Antonio Marin &nbsp;&nbsp;|&nbsp;&nbsp; Britany Vanessa</h1>
+    <h5 style="text-align: center;" aria-label="Autores">13/06/25</h5><br>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', sans-serif;
+      background-color: #0a0a1a;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.2rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .masked-img {
+      width: 220px;
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+      border: 2px solid #00ffe9;
+      box-shadow: 0 0 20px #00ffe9;
+    }
+
+    .hexagon {
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    }
+
+    .circle {
+      clip-path: circle(50% at 50% 50%);
+    }
+
+    .rhombus {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .masked-img:hover {
+      transform: scale(1.1);
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+ 
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle at center, #00ffea, transparent);
+      border-radius: 50%;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 2px #00ffe9);
+      animation: particleFloat 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes particleFloat {
+      0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(20px, -20px);
+        opacity: 0.3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Galería Neuroquimica</h1>
+
+  <div class="gallery">
+    <div>
+      <div class="masked-img hexagon" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1fADYsKVE_Ha62kmbOyC1JLCt8WOmNiDA2g&s');"></div>
+      <div class="caption">Conexiones neuronales</div>
+    </div>
+    <div>
+      <div class="masked-img circle" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqSEJQzb7iBulth_rj98gkWYbVdt3tnqpGOw&s');"></div>
+      <div class="caption">Sinapsis cerebral</div>
+    </div>
+    <div>
+      <div class="masked-img rhombus" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReIxkXWJySVJN-AmJwznK44IUzhhMcDt5Apg&s');"></div>
+      <div class="caption">Actividad emocional</div>
+    </div>
+  </div>
+
+  
+  <div class="particles"></div>
+
+  <script>
+    const container = document.querySelector('.particles');
+    const particleCount = 40;
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createParticle() {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = randomRange(4, 10);
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.top = randomRange(0, window.innerHeight) + 'px';
+      p.style.left = randomRange(0, window.innerWidth) + 'px';
+      container.appendChild(p);
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      createParticle();
+    }
+
+    window.addEventListener('resize', () => {
+      container.innerHTML = '';
+      for (let i = 0; i < particleCount; i++) {
+        createParticle();
+      }
+    });
+  </script>
+</body>
+<div style="text-align: center; margin-top: 40px;">
+  <a href="index.html" style="
+    background-color: #00ffe9;
+    color: #0a0a1a;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-family: 'Share Tech Mono', sans-serif;
+    text-decoration: none;
+    box-shadow: 0 0 10px #00ffe9;
+    transition: background-color 0.3s, color 0.3s;
+  "
+  onmouseover="this.style.backgroundColor='#0a0a1a'; this.style.color='#00ffe9';"
+  onmouseout="this.style.backgroundColor='#00ffe9'; this.style.color='#0a0a1a';">
+    ⬅ Volver a la Página Principal
+  </a>
+</div>
+</html>

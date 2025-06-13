@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información Neuroquímica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a1a;
+      color: #00ffe9;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 15px #00ffe9;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li a {
+      font-size: 1.3rem;
+      color: #00ffe9;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #00ffe9;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    li a:hover {
+      background-color: #00ffe9;
+      color: #0a0a1a;
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, #00ffea, transparent);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 8s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-30px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Qué te gustaría saber?</h1>
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Neurochemistry" target="_blank">Wikipedia</a></li><br><br>
+      <li><a href="https://www.youtube.com/watch?v=pRFXSjkpKWA" target="_blank">Video</a></li>
+    
+  </ul>
+
+  <div class="particles"></div>
+
+  <script>
+    const container = document.querySelector('.particles');
+    const total = 40;
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    for (let i = 0; i < total; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      const size = random(4, 10);
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.top = `${random(0, 100)}%`;
+      particle.style.left = `${random(0, 100)}%`;
+      particle.style.animationDuration = `${random(4, 10)}s`;
+      container.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
